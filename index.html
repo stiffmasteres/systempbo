@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Система ПБО — Операционная компания сети «Вкусно — и точка»</title>
+  <meta name="description" content="ООО «Система ПБО» — операционная компания сети ресторанов быстрого обслуживания «Вкусно — и точка». Более 960 ресторанов в 65+ регионах России." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF8C42;
+      --primary-dark: #E67A2E;
+      --secondary: #2D5F3F;
+      --secondary-light: #3A7B52;
+      --accent: #E63946;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+      --border-radius: 16px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      box-shadow: var(--shadow);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--secondary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--white);
+    }
+    
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--text-primary);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    
+    /* Hero Section */
+    main {
+      padding-top: 80px;
+    }
+    
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255,140,66,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+    
+    .hero-text .highlight {
+      color: var(--secondary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero-text p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 16px 32px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(255,140,66,0.4);
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,140,66,0.5);
+    }
+    
+    .btn-secondary {
+      background: var(--white);
+      color: var(--text-primary);
+      border: 2px solid #e0e0e0;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-green {
+      background: var(--secondary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(45,95,63,0.3);
+    }
+    
+    .btn-green:hover {
+      background: var(--secondary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(45,95,63,0.4);
+    }
+    
+    .hero-visual {
+      position: relative;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      box-shadow: var(--shadow-hover);
+      object-fit: cover;
+      animation: fadeInScale 1s ease-out;
+    }
+    
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Stats Bar */
+    .stats-bar {
+      background: var(--secondary);
+      padding: 40px 0;
+      box-shadow: var(--shadow);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .stat-item h3 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .stat-item p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+    
+    /* Sections */
+    section {
+      padding: 100px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* About Section */
+    .about-content {
+      background: var(--white);
+      padding: 60px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    
+    .about-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .highlight-card {
+      padding: 24px;
+      background: var(--bg-light);
+      border-radius: 16px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .highlight-card h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    
+    .highlight-card p {
+      font-size: 15px;
+      margin: 0;
+    }
+    
+    /* Activity Cards */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    
+    .activity-card {
+      background: var(--white);
+      padding: 40px 32px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border-top: 4px solid var(--primary);
+    }
+    
+    .activity-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .activity-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .activity-card h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    
+    .activity-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    /* Career Section */
+    .career-section {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+    }
+    
+    .career-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .career-content h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    
+    .career-content p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.95);
+    }
+    
+    /* Partners Section */
+    .partners-section {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .partners-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&auto=format&fit=crop') center/cover;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .partners-content {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255,140,66,0.08) 0%, rgba(45,95,63,0.08) 100%);
+      padding: 60px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
+      border: 2px solid rgba(255,140,66,0.2);
+    }
+    
+    .partners-content h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+    
+    .partners-content p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    
+    .partners-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+      text-align: left;
+    }
+    
+    .partner-feature {
+      background: var(--white);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    
+    .partner-feature h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+    
+    .partner-feature p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    /* Links Section */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
+    }
+    
+    .link-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .link-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .link-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .link-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(255,140,66,0.3);
+    }
+    
+    .link-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--secondary);
+    }
+    
+    .link-card p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    
+    .link-arrow {
+      display: inline-block;
+      font-size: 20px;
+      transition: transform 0.3s ease;
+      color: var(--primary);
+    }
+    
+    .link-card:hover .link-arrow {
+      transform: translateX(4px);
+    }
+    
+    /* Contacts Section */
+    .contacts-section {
+      background: var(--bg-light);
+    }
+    
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+    }
+    
+    .contacts-main {
+      background: var(--white);
+      padding: 50px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contacts-main h3 {
+      font-size: 28px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .contact-info {
+      margin-bottom: 24px;
+    }
+    
+    .contact-info h4 {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .contact-info p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    
+    .contacts-side {
+      background: var(--white);
+      padding: 50px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contacts-side h3 {
+      font-size: 24px;
+      margin-bottom: 24px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .contacts-side ul {
+      list-style: none;
+    }
+    
+    .contacts-side li {
+      margin-bottom: 16px;
+      padding-left: 28px;
+      position: relative;
+    }
+    
+    .contacts-side li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-brand h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+    
+    .footer-brand p {
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+    
+    .footer-links h4 {
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 30px;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+    
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      height: 280px;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .hero-text h1 {
+        font-size: 42px;
+      }
+      
+      .hero-visual {
+        height: 350px;
+      }
+      
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero-text h1 {
+        font-size: 36px;
+      }
+      
+      .hero-text p {
+        font-size: 18px;
+      }
+      
+      .section-header h2 {
+        font-size: 32px;
+      }
+      
+      .about-content, .contacts-main, .contacts-side, .partners-content {
+        padding: 32px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      
+      .stat-item h3 {
+        font-size: 36px;
+      }
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <div class="logo-icon">СП</div>
+          <span>СИСТЕМА ПБО</span>
+        </div>
+        <nav>
+          <a href="#about">О компании</a>
+          <a href="#activity">Деятельность</a>
+          <a href="#career">Карьера</a>
+          <a href="#partners">Партнёрам</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>
+              Операционная компания сети
+              <span class="highlight">«Вкусно — и точка»</span>
+            </h1>
+            <p>
+              Управляем одной из крупнейших сетей ресторанов быстрого обслуживания в России. 
+              Более 960 ресторанов в 65+ регионах, миллионы довольных гостей каждый день.
+            </p>
+            <div class="btn-group">
+              <a href="#about" class="btn btn-primary">Узнать больше</a>
+              <a href="https://vkusnoitochka.ru" target="_blank" rel="noopener" class="btn btn-secondary">Официальный сайт</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="https://pplx-res.cloudinary.com/image/upload/v1771278169/pplx_search_images/499c9ef8ea0d89f7e07fbd61f25a3ca768f33bf2.jpg" alt="Ресторан Вкусно и точка" class="hero-image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>960+</h3>
+            <p>Ресторанов по России</p>
+          </div>
+          <div class="stat-item">
+            <h3>65+</h3>
+            <p>Регионов присутствия</p>
+          </div>
+          <div class="stat-item">
+            <h3>180+ млрд ₽</h3>
+            <p>Годовая выручка</p>
+          </div>
+          <div class="stat-item">
+            <h3>50 000+</h3>
+            <p>Сотрудников в команде</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2>О компании</h2>
+          <p>
+            ООО «Система ПБО» — юридическое лицо и основная операционная структура 
+            сети ресторанов быстрого обслуживания «Вкусно — и точка»
+          </p>
+        </div>
+        <div class="about-content">
+          <p>
+            <strong>ООО «Система ПБО»</strong> является юридическим лицом и операционной компанией, 
+            которая управляет крупнейшей сетью ресторанов быстрого обслуживания в России — 
+            «Вкусно — и точка». Мы обеспечиваем работу всех ресторанов сети, развиваем инфраструктуру, 
+            внедряем инновационные решения и поддерживаем высокие стандарты качества и сервиса.
+          </p>
+          <p>
+            Компания управляет полным циклом работы ресторанов: от закупки продукции и логистики 
+            до обучения персонала и цифровой трансформации. Мы создаём рабочие места для десятков 
+            тысяч человек по всей России и постоянно развиваем сеть, открывая новые рестораны 
+            и совершенствуя сервисы для гостей.
+          </p>
+          
+          <div class="about-highlights">
+            <div class="highlight-card">
+              <h4>ОГРН</h4>
+              <p>1027700251754</p>
+            </div>
+            <div class="highlight-card">
+              <h4>ИНН</h4>
+              <p>7710044140</p>
+            </div>
+            <div class="highlight-card">
+              <h4>Основной ОКВЭД</h4>
+              <p>56.10 — Деятельность ресторанов и услуги по доставке продуктов питания</p>
+            </div>
+            <div class="highlight-card">
+              <h4>Юридический адрес</h4>
+              <p>г. Москва, Российская Федерация</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Section -->
+    <section id="activity" style="background: var(--bg-light);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Чем мы занимаемся</h2>
+          <p>
+            Комплексное управление сетью ресторанов и развитие инфраструктуры бренда 
+            «Вкусно — и точка» по всей России
+          </p>
+        </div>
+        <div class="activity-grid">
+          <div class="activity-card">
+            <span class="activity-icon">🍔</span>
+            <h3>Управление ресторанами</h3>
+            <p>
+              Операционное управление сетью из более чем 960 ресторанов быстрого обслуживания. 
+              Обеспечиваем бесперебойную работу всех точек, контролируем качество продукции 
+              и сервиса, внедряем единые стандарты работы.
+            </p>
+          </div>
+          <div class="activity-card">
+            <span class="activity-icon">🚚</span>
+            <h3>Логистика и закупки</h3>
+            <p>
+              Организуем поставки продукции, сырья и материалов для всей сети. Работаем с проверенными 
+              поставщиками, контролируем качество на всех этапах, обеспечиваем своевременную доставку 
+              во все регионы присутствия.
+            </p>
+          </div>
+          <div class="activity-card">
+            <span class="activity-icon">📱</span>
+            <h3>Цифровые сервисы</h3>
+            <p>
+              Развиваем мобильное приложение, сервисы доставки и онлайн-заказов. Внедряем 
+              инновационные решения для удобства гостей: программы лояльности, персонализированные 
+              предложения, бесконтактную оплату.
+            </p>
+          </div>
+          <div class="activity-card">
+            <span class="activity-icon">✅</span>
+            <h3>Контроль качества</h3>
+            <p>
+              Поддерживаем строгие стандарты качества продукции, безопасности пищевых продуктов 
+              и санитарных норм. Проводим регулярные проверки и аудиты всех ресторанов сети, 
+              обучаем персонал требованиям безопасности.
+            </p>
+          </div>
+          <div class="activity-card">
+            <span class="activity-icon">👥</span>
+            <h3>Развитие персонала</h3>
+            <p>
+              Обучаем и развиваем команду из десятков тысяч сотрудников. Создаём программы адаптации, 
+              корпоративное обучение и возможности карьерного роста для каждого члена команды — 
+              от новичков до управленцев.
+            </p>
+          </div>
+          <div class="activity-card">
+            <span class="activity-icon">🏗️</span>
+            <h3>Развитие сети</h3>
+            <p>
+              Открываем новые рестораны в разных форматах: классические, drive-through, компактные 
+              городские точки. Модернизируем существующую инфраструктуру, внедряем современное 
+              оборудование и технологии.
+            </p>
+          </div>
+        </div>
+        <!-- Career Section -->
+    <section id="career" class="career-section">
+      <div class="container">
+        <div class="career-content">
+          <h2>Карьера в «Системе ПБО»</h2>
+          <p>
+            Мы создаём возможности для профессионального роста и развития. В нашей команде 
+            работают более 50 000 человек: от сотрудников ресторанов до специалистов по логистике, 
+            IT, маркетингу и управлению. Присоединяйтесь к одной из крупнейших команд в индустрии!
+          </p>
+          <div class="btn-group" style="justify-content: center;">
+            <a href="https://rabotaitochka.ru" target="_blank" rel="noopener" class="btn btn-primary">
+              Вакансии и карьера
+            </a>
+            <a href="https://vkusnoitochka.ru/company" target="_blank" rel="noopener" class="btn btn-secondary">
+              О команде
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners-section">
+      <div class="container">
+        <div class="partners-content">
+          <h2>🤝 Партнёрам, блогерам и рекламодателям</h2>
+          <p>
+            Приглашаем к сотрудничеству блогеров, медиа-партнёров, рекламные агентства и всех, 
+            кто заинтересован в коллаборациях с ведущей сетью ресторанов быстрого обслуживания в России. 
+            Мы открыты для креативных идей, совместных кампаний и долгосрочного партнёрства.
+          </p>
+          
+          <div class="partners-features">
+            <div class="partner-feature">
+              <h4>🎬 Блогерам</h4>
+              <p>Коллаборации, промо-кампании, эксклюзивный контент</p>
+            </div>
+            <div class="partner-feature">
+              <h4>📺 Медиа и реклама</h4>
+              <p>Размещение рекламы, спонсорство, интеграции</p>
+            </div>
+            <div class="partner-feature">
+              <h4>🤝 Корпоративное партнёрство</h4>
+              <p>Совместные акции, кросс-маркетинг, B2B решения</p>
+            </div>
+            <div class="partner-feature">
+              <h4>🎯 Креативные проекты</h4>
+              <p>Необычные коллаборации и смелые идеи</p>
+            </div>
+          </div>
+          
+          <a href="https://vkusnoitochka.partners" target="_blank" rel="noopener" class="btn btn-green">
+            Партнёрский портал →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links Section -->
+    <section style="background: var(--bg-light); padding: 80px 0;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Полезные ссылки</h2>
+          <p>Официальные ресурсы сети «Вкусно — и точка»</p>
+        </div>
+        <div class="links-grid">
+          <a href="https://vkusnoitochka.ru" target="_blank" rel="noopener" class="link-card">
+            <h3>
+              Официальный сайт
+              <span class="link-arrow">→</span>
+            </h3>
+            <p>
+              Меню, акции, новости и информация для гостей сети «Вкусно — и точка»
+            </p>
+          </a>
+          <a href="https://rabotaitochka.ru" target="_blank" rel="noopener" class="link-card">
+            <h3>
+              Карьерный портал
+              <span class="link-arrow">→</span>
+            </h3>
+            <p>
+              Актуальные вакансии, условия работы и возможности для профессионального развития
+            </p>
+          </a>
+          <a href="https://vkusnoitochka.partners" target="_blank" rel="noopener" class="link-card">
+            <h3>
+              Партнёрский портал
+              <span class="link-arrow">→</span>
+            </h3>
+            <p>
+              Сотрудничество с блогерами, медиа и рекламодателями. Коллаборации и креативные проекты
+            </p>
+          </a>
+          <a href="https://vkusnoitochka.ru/company" target="_blank" rel="noopener" class="link-card">
+            <h3>
+              О компании
+              <span class="link-arrow">→</span>
+            </h3>
+            <p>
+              История, миссия, ценности и информация о развитии сети ресторанов
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="contacts-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Контакты и реквизиты</h2>
+          <p>Юридическая информация и контактные данные компании</p>
+        </div>
+        <div class="contacts-grid">
+          <div class="contacts-main">
+            <h3>ООО «СИСТЕМА ПБО»</h3>
+            <div class="contact-info">
+              <h4>Полное наименование</h4>
+              <p>Общество с ограниченной ответственностью «СИСТЕМА ПБО»</p>
+            </div>
+            <div class="contact-info">
+              <h4>ОГРН</h4>
+              <p>1027700251754</p>
+            </div>
+            <div class="contact-info">
+              <h4>ИНН / КПП</h4>
+              <p>7710044140 / 770501001</p>
+            </div>
+            <div class="contact-info">
+              <h4>Юридический адрес</h4>
+              <p>г. Москва, Российская Федерация</p>
+            </div>
+            <div class="contact-info">
+              <h4>Основной вид деятельности (ОКВЭД)</h4>
+              <p>56.10 — Деятельность ресторанов и услуги по доставке продуктов питания</p>
+            </div>
+          </div>
+          <div class="contacts-side">
+            <h3>Для связи</h3>
+            <ul>
+              <li>Вопросы по работе ресторанов — через официальный сайт «Вкусно — и точка»</li>
+              <li>Карьера и вакансии — через портал rabotaitochka.ru</li>
+              <li>Партнёрство и реклама — через vkusnoitochka.partners</li>
+              <li>Общие вопросы — через контактную форму на vkusnoitochka.ru</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>СИСТЕМА ПБО</h3>
+          <p>
+            Операционная компания сети ресторанов быстрого обслуживания «Вкусно — и точка». 
+            Управляем более чем 960 ресторанами в 65+ регионах России, создаём возможности 
+            для развития и карьерного роста десятков тысяч сотрудников.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Компания</h4>
+          <ul>
+            <li><a href="#about">О компании</a></li>
+            <li><a href="#activity">Деятельность</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="https://vkusnoitochka.ru/legal" target="_blank" rel="noopener">Правовая информация</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Ресурсы</h4>
+          <ul>
+            <li><a href="https://vkusnoitochka.ru" target="_blank" rel="noopener">Официальный сайт</a></li>
+            <li><a href="https://rabotaitochka.ru" target="_blank" rel="noopener">Карьера</a></li>
+            <li><a href="https://vkusnoitochka.partners" target="_blank" rel="noopener">Партнёрам</a></li>
+            <li><a href="https://vkusnoitochka.ru/company" target="_blank" rel="noopener">О бренде</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ООО «Система ПБО». Все права защищены. | ИНН 7710044140, ОГРН 1027700251754</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href !== '') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
