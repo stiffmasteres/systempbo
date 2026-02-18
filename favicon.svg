@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
-  <rect width="512" height="512" rx="96" ry="96" fill="#2D5F3F"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
-        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="220" font-weight="700" fill="#ffffff">
-    СП
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" rx="150" fill="#2D5F3F"/>
+  <text 
+    x="500" 
+    y="650" 
+    text-anchor="middle" 
+    font-family="Arial Black, Arial Bold, Helvetica, sans-serif" 
+    font-size="450" 
+    font-weight="900" 
+    fill="#FFFFFF"
+    letter-spacing="-20">СП</text>
 </svg>
